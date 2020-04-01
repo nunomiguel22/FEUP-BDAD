@@ -7,9 +7,9 @@ PRAGMA encoding="UTF-8";
 DROP TABLE IF EXISTS perfil;
 create Table perfil(
 	idperfil integer PRIMARY KEY AUTOINCREMENT,
-	username varchar(32) not null,
+	username varchar(32) not null UNIQUE,
 	password varchar(32) not null,
-	email varchar(32) not null,
+	email varchar(32) not null UNIQUE,
 	avatar varchar(32) --default foto discord
 );
 
@@ -54,11 +54,18 @@ create table mensagem(
 	pinned boolean default 0
 );
 
+DROP TABLE IF EXISTS tiporeacao;
+create table tiporeacao(
+	idreacao integer PRIMARY KEY AUTOINCREMENT,
+	reacao varchar(16) not null UNIQUE,
+	avatarreacao varchar(32)
+);
+
 DROP TABLE IF EXISTS reacao;
 create table reacao(
-	idreacao integer PRIMARY KEY,
-	idmensagem integer
-	--tipo de reaçao??
+	idmensagem integer CONSTRAINT fk_reacao_idmensagem REFERENCES mensagem(idmensagem),
+	idperfil integer CONSTRAINT fk_reacao_idperfil REFERENCES perfil(idperfil),
+	idreacao integer CONSTRAINT fk_reacao_tiporeacao REFERENCES tiporeacao(idreacao)
 );
 
 DROP TABLE IF EXISTS subscricaosala;
