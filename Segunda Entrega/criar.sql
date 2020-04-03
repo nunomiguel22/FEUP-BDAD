@@ -34,7 +34,7 @@ create table sala(
 	idsala integer PRIMARY KEY AUTOINCREMENT,
 	nome varchar(32),
 	avatar varchar(32), -- default ...
-	adulto integer --boolean
+	adulto integer not null CHECK (adulto IN (0,1)) --boolean
 );
 
 DROP TABLE IF EXISTS chat;
@@ -51,7 +51,7 @@ create table mensagem(
 	idperfil integer CONSTRAINT fk_mensagem_idperfil REFERENCES perfil(idperfil),
 	mensagem varchar(64) not null,
 	tempo float(32) not null,
-	pinned integer default 0 --boolean
+	pinned integer CHECK (pinned IN (0,1)) default 0 --boolean
 );
 
 DROP TABLE IF EXISTS tiporeacao;
@@ -79,6 +79,6 @@ DROP TABLE IF EXISTS amizade;
 create table amizade(
 	idperfil1 integer CONSTRAINT fk_subscricaosala_idperfil1  REFERENCES perfil(idperfil), --envia
 	idperfil2 integer CONSTRAINT fk_subscricaosala_idperfil2 REFERENCES perfil(idperfil), --recebe
-	amigos integer, --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
+	amigos integer CHECK (amigos IN (0,1)), --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
 	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
 );
