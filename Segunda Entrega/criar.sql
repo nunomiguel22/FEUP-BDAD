@@ -77,8 +77,8 @@ create table subscricaosala(
 
 DROP TABLE IF EXISTS amizade;
 create table amizade(
-	idperfil1 integer CONSTRAINT fk_subscricaosala_idperfil1  REFERENCES perfil(idperfil),
-	idperfil2 integer CONSTRAINT fk_subscricaosala_idperfil2 REFERENCES perfil(idperfil),
-	amizade integer not null, --boolean
+	idperfil1 integer CONSTRAINT fk_subscricaosala_idperfil1  REFERENCES perfil(idperfil), --envia
+	idperfil2 integer CONSTRAINT fk_subscricaosala_idperfil2 REFERENCES perfil(idperfil), --recebe
+	amigos integer, --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
 	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
 );
