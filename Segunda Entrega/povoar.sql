@@ -56,7 +56,7 @@ INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (2,'Grupo', 'avatar4', 0
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (1,'CS', 'avatar5', 1);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (2,'Legends', 'avatar6', 0);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (5,'Mais1', 'avatar7', 0);
-INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (9,'Spot', 'avatar8, 1);
+INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (9,'Spot', 'avatar8', 1);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (3,'LOR', 'avatar9', 0);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (8,'LORE', 'avatar10', 0);
 
