@@ -65,7 +65,8 @@ DROP TABLE IF EXISTS reacao;
 create table reacao(
 	idmensagem integer CONSTRAINT fk_reacao_idmensagem REFERENCES mensagem(idmensagem),
 	idperfil integer CONSTRAINT fk_reacao_idperfil REFERENCES perfil(idperfil),
-	idreacao integer CONSTRAINT fk_reacao_tiporeacao REFERENCES tiporeacao(idreacao)
+	idreacao integer CONSTRAINT fk_reacao_tiporeacao REFERENCES tiporeacao(idreacao),
+	CONSTRAINT pk_reacao PRIMARY KEY (idmensagem, idperfil)
 );
 
 DROP TABLE IF EXISTS subscricaosala;
