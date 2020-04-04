@@ -4,14 +4,69 @@
 PRAGMA foreign_keys = ON;
 PRAGMA encoding="UTF-8";
 
-DROP TABLE IF EXISTS perfil;
-create Table perfil(
-	idperfil integer PRIMARY KEY AUTOINCREMENT,
+DROP TABLE IF EXISTS chat;
+create table chat( 
+	idchat integer PRIMARY KEY AUTOINCREMENT, 
+	idsala integer CONSTRAINT fk_chat_idsala REFERENCES sala(idsala),
+	nome varchar(16) not null
+);
+
+DROP TABLE IF EXISTS subscricaosala;
+create table subscricaosala(
+	idperfil integer CONSTRAINT fk_subscricaosala_idperfil REFERENCES perfil(idperfil),
+	idsala integer CONSTRAINT fk_subscricaosala_idsala REFERENCES sala(idsala),
+	CONSTRAINT pk_subscricaosala PRIMARY KEY (idperfil, idsala)
+);
+
+DROP TABLE IF EXISTS sala;
+create table sala(
+	idsala integer PRIMARY KEY AUTOINCREMENT,
+	idperfil integer CONSTRAINT fk_sala_idperfil REFERENCES perfil(idperfil), --admin
+	nome varchar(32),
+	avatar varchar(32), -- default ...
+	adulto integer not null CHECK(adulto IN (0,1)) --boolean
+);
+
+DROP TABLE IF EXISTS emoji;
+create table emoji(
+	idemoji integer PRIMARY KEY AUTOINCREMENT,
 	nome varchar(32) not null,
-	username varchar(32) not null UNIQUE,
-	password varchar(32) not null CHECK(length(password) >= 6),
-	email varchar(32) not null UNIQUE,
-	avatar varchar(32) --default foto discord
+	emoji varchar(32) not null
+);
+
+DROP TABLE IF EXISTS mensagem;
+create table mensagem(
+	idmensagem integer PRIMARY KEY AUTOINCREMENT,
+	idchat integer CONSTRAINT fk_chat_mensagem REFERENCES chat(idchat),
+	idperfil integer CONSTRAINT fk_mensagem_idperfil REFERENCES perfil(idperfil),
+	mensagem varchar(64) not null,
+	tempo float(32) not null,
+	pinned integer default 0 CHECK(pinned IN (0,1)) --boolean
+);
+
+DROP TABLE IF EXISTS emojimensagem;
+create table emojimensagem(
+	idmensagem integer CONSTRAINT fk_emojimensagem_idmensagem REFERENCES mensagem(idmensagem),
+	idemoji integer CONSTRAINT fk_emojimensagem_idemoji REFERENCES emoji(idemoji),
+	posicao integer not null,
+	CONSTRAINT pk_emojimensagem PRIMARY KEY (idmensagem, posicao)
+);
+
+DROP TABLE IF EXISTS reacao;
+create table reacao(
+	idmensagem integer CONSTRAINT fk_reacao_idmensagem REFERENCES mensagem(idmensagem),
+	idperfil integer CONSTRAINT fk_reacao_idperfil REFERENCES perfil(idperfil),
+	idemoji integer CONSTRAINT fk_reacao_idemoji REFERENCES emoji(idemoji),
+	tempo float(32) not null,
+	CONSTRAINT pk_reacao PRIMARY KEY (idmensagem, idperfil)
+);
+
+DROP TABLE IF EXISTS amizade;
+create table amizade(
+	idperfil1 integer CONSTRAINT fk_amizade_idperfil1  REFERENCES perfil(idperfil), --envia
+	idperfil2 integer CONSTRAINT fk_amizade_idperfil2 REFERENCES perfil(idperfil), --recebe
+	amizade integer CHECK(amizade IN (0,1)), --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
+	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
 );
 
 DROP TABLE IF EXISTS perfilgratis; 
@@ -29,57 +84,12 @@ create table perfilpremium(
 	mensalidade float(32) default 9.99
 );
 
-DROP TABLE IF EXISTS sala;
-create table sala(
-	idsala integer PRIMARY KEY AUTOINCREMENT,
-	nome varchar(32),
-	avatar varchar(32), -- default ...
-	adulto integer not null CHECK(adulto IN (0,1)) --boolean
-);
-
-DROP TABLE IF EXISTS chat;
-create table chat( 
-	idchat integer PRIMARY KEY AUTOINCREMENT, 
-	idsala integer CONSTRAINT fk_chat_idsala REFERENCES sala(idsala),
-	nome varchar(16) not null
-);
-
-DROP TABLE IF EXISTS mensagem;
-create table mensagem(
-	idmensagem integer PRIMARY KEY AUTOINCREMENT,
-	idchat integer CONSTRAINT fk_chat_mensagem REFERENCES chat(idchat),
-	idperfil integer CONSTRAINT fk_mensagem_idperfil REFERENCES perfil(idperfil),
-	mensagem varchar(64) not null,
-	tempo float(32) not null,
-	pinned integer default 0 CHECK(pinned IN (0,1)) --boolean
-);
-
-DROP TABLE IF EXISTS tiporeacao;
-create table tiporeacao(
-	idreacao integer PRIMARY KEY AUTOINCREMENT,
-	tiporeacao varchar(16) not null UNIQUE,
-	avatarreacao varchar(32)
-);
-
-DROP TABLE IF EXISTS reacao;
-create table reacao(
-	idmensagem integer CONSTRAINT fk_reacao_idmensagem REFERENCES mensagem(idmensagem),
-	idperfil integer CONSTRAINT fk_reacao_idperfil REFERENCES perfil(idperfil),
-	idreacao integer CONSTRAINT fk_reacao_tiporeacao REFERENCES tiporeacao(idreacao),
-	CONSTRAINT pk_reacao PRIMARY KEY (idmensagem, idperfil)
-);
-
-DROP TABLE IF EXISTS subscricaosala;
-create table subscricaosala(
-	idperfil integer CONSTRAINT fk_subscricaosala_idperfil REFERENCES perfil(idperfil),
-	idsala integer CONSTRAINT fk_chat_idsala REFERENCES sala(idsala),
-	CONSTRAINT pk_subscricaosala PRIMARY KEY (idperfil, idsala)
-);
-
-DROP TABLE IF EXISTS amizade;
-create table amizade(
-	idperfil1 integer CONSTRAINT fk_subscricaosala_idperfil1  REFERENCES perfil(idperfil), --envia
-	idperfil2 integer CONSTRAINT fk_subscricaosala_idperfil2 REFERENCES perfil(idperfil), --recebe
-	amizade integer CHECK(amizade IN (0,1)), --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
-	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
+DROP TABLE IF EXISTS perfil;
+create Table perfil(
+	idperfil integer PRIMARY KEY AUTOINCREMENT,
+	nome varchar(32) not null,
+	username varchar(32) not null UNIQUE,
+	password varchar(32) not null CHECK(length(password) >= 6),
+	email varchar(32) not null UNIQUE,
+	avatar varchar(32) --default foto discord
 );

@@ -31,12 +31,13 @@ INSERT INTO perfilgratis(idperfil, emojis, reacoes) VALUES (10,2, 2);
 INSERT INTO perfilgratis(idperfil, emojis, reacoes) VALUES (11,15, 3);
 INSERT INTO perfilgratis(idperfil, emojis, reacoes) VALUES (12,5, 7);
 
-
+--SALA
 INSERT INTO sala(nome, avatar, adulto) VALUES ('CANHAO OMANO', 'avatar1', 0);
 INSERT INTO sala(nome, avatar, adulto) VALUES ('PARTY', 'avatar2', 1);
 INSERT INTO sala(nome, avatar, adulto) VALUES ('LOL', 'avatar3', 0);
 
-INSERT INTO chat(idsala, nome) VALUES (1, 'Sala 1.1');
+--CHAT
+INSERT INTO chat(idsala, nome) VALUES (null, 'Sala 1.1');
 INSERT INTO chat(idsala, nome) VALUES (1, 'Sala 1.2');
 INSERT INTO chat(idsala, nome) VALUES (1, 'Sala 1.3');
 INSERT INTO chat(idsala, nome) VALUES (2, 'Sala 2.1');
@@ -46,6 +47,7 @@ INSERT INTO chat(idsala, nome) VALUES (3, 'Sala 3.1');
 INSERT INTO chat(idsala, nome) VALUES (3, 'Sala 3.2');
 INSERT INTO chat(idsala, nome) VALUES (3, 'Sala 3.1');
 
+--MENSAGEM
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(1, 2, 'Tudo Bem?', 21.30, 1);
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(1, 1, 'sim e tu?', 21.33, 0);
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(4, 5, 'TA tudo?', 12.36, null);
