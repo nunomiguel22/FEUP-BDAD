@@ -7,12 +7,12 @@ PRAGMA encoding="UTF-8";
 DROP TABLE IF EXISTS perfil;
 create Table perfil(
 	idperfil integer PRIMARY KEY AUTOINCREMENT,
+	nome varchar(32) not null,
 	username varchar(32) not null UNIQUE,
-	password varchar(32) not null,
+	password varchar(32) not null CHECK(length(password) >= 6),
 	email varchar(32) not null UNIQUE,
 	avatar varchar(32) --default foto discord
 );
-
 
 DROP TABLE IF EXISTS perfilgratis; 
 create table perfilgratis(
@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS perfilpremium;
 create table perfilpremium(
 	idperfil integer PRIMARY KEY 
 						CONSTRAINT fk_perfilpremium_idperfil REFERENCES perfil(idperfil) ON DELETE CASCADE,
-	mensalidade float(32)
+	mensalidade float(32) default 9.99
 );
 
 DROP TABLE IF EXISTS sala;
@@ -34,7 +34,7 @@ create table sala(
 	idsala integer PRIMARY KEY AUTOINCREMENT,
 	nome varchar(32),
 	avatar varchar(32), -- default ...
-	adulto integer not null CHECK (adulto IN (0,1)) --boolean
+	adulto integer not null CHECK(adulto IN (0,1)) --boolean
 );
 
 DROP TABLE IF EXISTS chat;
@@ -51,13 +51,13 @@ create table mensagem(
 	idperfil integer CONSTRAINT fk_mensagem_idperfil REFERENCES perfil(idperfil),
 	mensagem varchar(64) not null,
 	tempo float(32) not null,
-	pinned integer CHECK (pinned IN (0,1)) default 0 --boolean
+	pinned integer default 0 CHECK(pinned IN (0,1)) --boolean
 );
 
 DROP TABLE IF EXISTS tiporeacao;
 create table tiporeacao(
 	idreacao integer PRIMARY KEY AUTOINCREMENT,
-	reacao varchar(16) not null UNIQUE,
+	tiporeacao varchar(16) not null UNIQUE,
 	avatarreacao varchar(32)
 );
 
@@ -79,6 +79,6 @@ DROP TABLE IF EXISTS amizade;
 create table amizade(
 	idperfil1 integer CONSTRAINT fk_subscricaosala_idperfil1  REFERENCES perfil(idperfil), --envia
 	idperfil2 integer CONSTRAINT fk_subscricaosala_idperfil2 REFERENCES perfil(idperfil), --recebe
-	amigos integer CHECK (amigos IN (0,1)), --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
+	amizade integer CHECK(amizade IN (0,1)), --boolean (NULL - pedido pendente; 0 - recusado; 1 - aceite)
 	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
 );
