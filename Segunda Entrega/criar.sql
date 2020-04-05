@@ -4,6 +4,7 @@
 PRAGMA foreign_keys = ON;
 PRAGMA encoding="UTF-8";
 
+--CHAT
 DROP TABLE IF EXISTS chat;
 create table chat( 
 	idchat integer PRIMARY KEY AUTOINCREMENT, 
@@ -11,6 +12,7 @@ create table chat(
 	nome varchar(16) not null
 );
 
+--SUBSCRICAO_SALA
 DROP TABLE IF EXISTS subscricaosala;
 create table subscricaosala(
 	idperfil integer CONSTRAINT fk_subscricaosala_idperfil REFERENCES perfil(idperfil),
@@ -18,6 +20,7 @@ create table subscricaosala(
 	CONSTRAINT pk_subscricaosala PRIMARY KEY (idperfil, idsala)
 );
 
+--SALA
 DROP TABLE IF EXISTS sala;
 create table sala(
 	idsala integer PRIMARY KEY AUTOINCREMENT,
@@ -27,6 +30,7 @@ create table sala(
 	adulto integer not null CHECK(adulto IN (0,1)) --boolean
 );
 
+--EMOJI
 DROP TABLE IF EXISTS emoji;
 create table emoji(
 	idemoji integer PRIMARY KEY AUTOINCREMENT,
@@ -34,6 +38,7 @@ create table emoji(
 	emoji varchar(32) not null
 );
 
+--MENSAGEM
 DROP TABLE IF EXISTS mensagem;
 create table mensagem(
 	idmensagem integer PRIMARY KEY AUTOINCREMENT,
@@ -44,6 +49,7 @@ create table mensagem(
 	pinned integer default 0 CHECK(pinned IN (0,1)) --boolean
 );
 
+--EMOJIMENSAGEM
 DROP TABLE IF EXISTS emojimensagem;
 create table emojimensagem(
 	idmensagem integer CONSTRAINT fk_emojimensagem_idmensagem REFERENCES mensagem(idmensagem),
@@ -52,6 +58,7 @@ create table emojimensagem(
 	CONSTRAINT pk_emojimensagem PRIMARY KEY (idmensagem, posicao)
 );
 
+--REACAO
 DROP TABLE IF EXISTS reacao;
 create table reacao(
 	idmensagem integer CONSTRAINT fk_reacao_idmensagem REFERENCES mensagem(idmensagem),
@@ -61,6 +68,7 @@ create table reacao(
 	CONSTRAINT pk_reacao PRIMARY KEY (idmensagem, idperfil)
 );
 
+--AMIZADE
 DROP TABLE IF EXISTS amizade;
 create table amizade(
 	idperfil1 integer CONSTRAINT fk_amizade_idperfil1  REFERENCES perfil(idperfil), --envia
@@ -69,21 +77,24 @@ create table amizade(
 	CONSTRAINT pk_amizade PRIMARY KEY (idperfil1, idperfil2)
 );
 
+--PERFIL_GRATIS
 DROP TABLE IF EXISTS perfilgratis; 
 create table perfilgratis(
 	idperfil integer PRIMARY KEY 
-						CONSTRAINT fk_perfilgratis_idperfil REFERENCES perfil(idperfil) ON DELETE CASCADE,
+			CONSTRAINT fk_perfilgratis_idperfil REFERENCES perfil(idperfil) ON DELETE CASCADE,
 	emojis integer(32) default 0,
 	reacoes integer(32) default 0
 );
 
+--PERFIL_PREMIUM
 DROP TABLE IF EXISTS perfilpremium;
 create table perfilpremium(
 	idperfil integer PRIMARY KEY 
-						CONSTRAINT fk_perfilpremium_idperfil REFERENCES perfil(idperfil) ON DELETE CASCADE,
+			CONSTRAINT fk_perfilpremium_idperfil REFERENCES perfil(idperfil) ON DELETE CASCADE,
 	mensalidade float(32) default 9.99
 );
 
+--PERFIL
 DROP TABLE IF EXISTS perfil;
 create Table perfil(
 	idperfil integer PRIMARY KEY AUTOINCREMENT,

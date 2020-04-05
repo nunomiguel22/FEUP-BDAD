@@ -33,7 +33,6 @@ INSERT INTO perfilgratis(idperfil, emojis, reacoes) VALUES (11,15, 3);
 INSERT INTO perfilgratis(idperfil, emojis, reacoes) VALUES (12,5, 7);
 
 --AMIZADE
-
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (1,4, 1);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (1,2, null);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (2,3, 0);
@@ -47,7 +46,6 @@ INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (5,8, 1);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (7,4, 1);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (9,7, 1);
 
-
 --SALA
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (1, 'CANHAO OMANO', 'avatar1', 0);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (2,'PARTY', 'avatar2', 1);
@@ -60,24 +58,21 @@ INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (9,'Spot', 'avatar8', 1)
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (3,'LOR', 'avatar9', 0);
 INSERT INTO sala(idperfil, nome, avatar, adulto) VALUES (8,'LORE', 'avatar10', 0);
 
-
-
 --SUBSCRIÇAO_SALA
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (1,3);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (1,2);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (3,1);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (9,6);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (2,5);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (4,10);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (5,10);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (5,3);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (7,1);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (8,1);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (8,3);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (12, 9);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (10, 1);
-INSERTO INTO subscricaosala(idperfil, idsala) VALUES (11, 6);
-
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (1,3);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (1,2);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (3,1);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (9,6);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (2,5);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (4,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (5,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (5,3);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (7,1);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (8,1);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (8,3);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (12, 9);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (10, 1);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (11, 6);
 
 --CHAT
 INSERT INTO chat(idsala, nome) VALUES (1, 'Sala 1.1');
@@ -117,7 +112,6 @@ INSERT INTO chat(idsala, nome) VALUES (12, 'Sala 12.1');
 INSERT INTO chat(idsala, nome) VALUES (12, 'Sala 12.2');
 INSERT INTO chat(idsala, nome) VALUES (12, 'Sala 12.3');
 
-
 --MENSAGEM
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(1, 2, 'Tudo Bem?', 21.30, 1);
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(1, 1, 'sim e tu?', 21.33, 0);
@@ -150,28 +144,24 @@ INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(29, 5, 'V
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(32, 4, 'Vamos jogar', 21.30, 1);
 INSERT INTO mensagem(idchat, idperfil, mensagem, tempo, pinned) VALUES(32, 3, 'Tudo Bem?', 21.30, 0);
 
-
 --EMOJI
+INSERT INTO emoji(nome, emoji) VALUES ('sorrir', ':)');
+INSERT INTO emoji(nome, emoji) VALUES ('triste', ':(');
+INSERT INTO emoji(nome, emoji) VALUES ('beijo', ':*');
+INSERT INTO emoji(nome, emoji) VALUES ('coraçao', '<3');
+INSERT INTO emoji(nome, emoji) VALUES ('lingua', ':P');
+INSERT INTO emoji(nome, emoji) VALUES ('xisdê', 'xD');
+INSERT INTO emoji(nome, emoji) VALUES ('pog', ':P');
+INSERT INTO emoji(nome, emoji) VALUES ('wink', ';)');
+INSERT INTO emoji(nome, emoji) VALUES ('sealed', ':X');
+INSERT INTO emoji(nome, emoji) VALUES ('dead', 'X(');
+INSERT INTO emoji(nome, emoji) VALUES ('angry', ':-|');
+INSERT INTO emoji(nome, emoji) VALUES ('cool', 'B-)');
+INSERT INTO emoji(nome, emoji) VALUES ('suprised', ':O');
+INSERT INTO emoji(nome, emoji) VALUES ('heartbreak', '</3');
+INSERT INTO emoji(nome, emoji) VALUES ('sorrir2', ':D');
 
-INSERTO INTO emoji(nome, emoji) VALUES ('sorrir', ':)');
-INSERTO INTO emoji(nome, emoji) VALUES ('triste', ':(');
-INSERTO INTO emoji(nome, emoji) VALUES ('beijo', ':*');
-INSERTO INTO emoji(nome, emoji) VALUES ('coraçao', '<3');
-INSERTO INTO emoji(nome, emoji) VALUES ('lingua', ':P');
-INSERTO INTO emoji(nome, emoji) VALUES ('xisdê', 'xD');
-INSERTO INTO emoji(nome, emoji) VALUES ('pog', ':P');
-INSERTO INTO emoji(nome, emoji) VALUES ('wink', ';)');
-INSERTO INTO emoji(nome, emoji) VALUES ('sealed', ':X');
-INSERTO INTO emoji(nome, emoji) VALUES ('dead', 'X(');
-INSERTO INTO emoji(nome, emoji) VALUES ('angry', ':-|');
-INSERTO INTO emoji(nome, emoji) VALUES ('cool', 'B-)');
-INSERTO INTO emoji(nome, emoji) VALUES ('suprised', ':O');
-INSERTO INTO emoji(nome, emoji) VALUES ('heartbreak', '</3');
-INSERTO INTO emoji(nome, emoji) VALUES ('sorrir2', ':D');
-
-
---Emoji_mensagem
-
+--EMOJI_MENSAGEM
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (1, 1, 1);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (1, 2, 2);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (2, 3, 1);
@@ -196,9 +186,7 @@ INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (26, 8, 1);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (21, 1, 1);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (23, 2, 1);
 
-
---Recao
-
+--REACAO
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (1, 1, 1, 21.30);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (2, 2, 2, 20.30);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (3, 3, 4, 00.40);
@@ -215,5 +203,3 @@ INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (24, 8, 7, 4.20)
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (21, 10, 1, 21.30);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (23, 9, 3, 21.30);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (25, 2, 8, 21.30);
-
-
