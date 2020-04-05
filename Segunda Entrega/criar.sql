@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS sala;
 create table sala(
 	idsala integer PRIMARY KEY AUTOINCREMENT,
 	idperfil integer CONSTRAINT fk_sala_idperfil REFERENCES perfil(idperfil), --admin
-	nome varchar(32),
-	avatar varchar(32), -- default ...
+	nome varchar(32) default 'Sala', 
+	avatar varchar(32) default 'avatar1', --imagem predefinida da sala
 	adulto integer not null CHECK(adulto IN (0,1)) --boolean
 );
 
@@ -102,5 +102,5 @@ create Table perfil(
 	username varchar(32) not null UNIQUE,
 	password varchar(32) not null CHECK(length(password) >= 6),
 	email varchar(32) not null UNIQUE,
-	avatar varchar(32) --default foto discord
+	avatar varchar(32) default 'avatar1' --imagem predefinida para utilizadores
 );
