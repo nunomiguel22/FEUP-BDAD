@@ -6,7 +6,6 @@
 
 SELECT sala.nome, perfil.nome AS administrador, sala.avatar
 FROM sala
-INNER JOIN perfil
-ON sala.idperfil = perfil.idperfil
+INNER JOIN perfil USING(idperfil)
 WHERE adulto = 1
 GROUP BY sala.nome

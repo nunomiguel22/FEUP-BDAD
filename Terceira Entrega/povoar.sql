@@ -54,6 +54,7 @@ INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (4,11, 1);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (9,7, 1);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (9,4, 0);
 INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (9,15, null);
+INSERT INTO amizade(idperfil1, idperfil2, amizade) VALUES (6,11, null);
 
 --SALA
 INSERT INTO sala(idperfil, adulto) VALUES (1, 0);
