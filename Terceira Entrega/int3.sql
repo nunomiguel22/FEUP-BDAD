@@ -9,6 +9,6 @@ FROM perfil
 WHERE EXISTS
 (SELECT *
 FROM amizade
-		WHERE perfil.idperfil = amizade.idperfil1
-		AND amizade.idperfil2 = 3
-		AND amizade.amizade IS NULL)
+WHERE perfil.idperfil = amizade.idperfil1
+AND amizade.idperfil2 = 3
+AND amizade.amizade IS NULL)
