@@ -1,4 +1,4 @@
--- int2 _ obter salas com conteúdo adulto
+-- int4 _ obter salas iniciadas por 'S'
 
 .mode columns
 .headers on
@@ -7,5 +7,5 @@
 SELECT sala.nome, perfil.nome AS administrador, sala.avatar
 FROM sala
 INNER JOIN perfil USING(idperfil)
-WHERE adulto = 1
+WHERE sala.nome LIKE 's%'
 ORDER BY sala.nome

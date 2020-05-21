@@ -1,4 +1,4 @@
--- int3 _ obter pedidos de amizade de Mário Teixeira -> idperfil 3
+-- int3 _ obter amizades de Sofia Pires -> idperfil 11
 
 .mode columns
 .headers on
@@ -9,6 +9,6 @@ FROM perfil
 WHERE EXISTS
 (SELECT *
 FROM amizade
-WHERE perfil.idperfil = amizade.idperfil1
-AND amizade.idperfil2 = 3
-AND amizade.amizade IS NULL)
+		WHERE perfil.idperfil = amizade.idperfil1
+		AND amizade.idperfil2 = 3
+		AND amizade.amizade IS NULL)
