@@ -1,4 +1,4 @@
--- int3 _ obter amizades de Sofia Pires -> idperfil 11
+-- int3 _ obter pedidos de amizade de Mário Teixeira -> idperfil 3
 
 .mode columns
 .headers on
