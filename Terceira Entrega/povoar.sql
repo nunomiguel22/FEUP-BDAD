@@ -92,6 +92,10 @@ INSERT INTO subscricaosala(idperfil, idsala) VALUES (2,10);
 INSERT INTO subscricaosala(idperfil, idsala) VALUES (4,10);
 INSERT INTO subscricaosala(idperfil, idsala) VALUES (7,10);
 INSERT INTO subscricaosala(idperfil, idsala) VALUES (15,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (1,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (12,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (9,10);
+INSERT INTO subscricaosala(idperfil, idsala) VALUES (14,10);
 
 --CHAT
 INSERT INTO chat(idsala, nome) VALUES (1, 'Sala 1.1');
@@ -193,7 +197,12 @@ INSERT INTO emoji(nome, emoji) VALUES ('sorrir+', ':D');	--15
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (4, 1, 11);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (6, 12, 9);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (6, 12, 10);
-INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (10, 10, 31);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (8, 12, 10);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (8, 12, 11);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (9, 5, 7);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (10, 4, 10);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (10, 10, 11);
+INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (11, 12, 10);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (12, 6, 16);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (24, 15, 13);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (29, 4, 11);
@@ -204,11 +213,13 @@ INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (40, 7, 16);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (47, 5, 23);
 INSERT INTO emojimensagem(idmensagem, idemoji, posicao) VALUES (49, 5, 1);
 
+
+
 --REACAO
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (4, 1, 15, 21.50);
-INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (6, 7, 15, 12.10);
+INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (6, 2, 15, 12.10);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (17, 4, 8, 19.44);
-INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (24, 9, 1, 10.02);
+INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (24, 2, 1, 10.02);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (29, 9, 4, 21.05);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (29, 6, 12, 21.13);
 INSERT INTO reacao(idmensagem, idperfil, idemoji, tempo) VALUES (30, 1, 14, 23.19);
