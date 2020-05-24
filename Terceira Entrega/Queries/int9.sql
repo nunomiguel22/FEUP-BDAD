@@ -10,10 +10,10 @@ from mensagem natural join
 	perfil
 
 group by mensagem.idperfil
-having count(*) > (select avg(media_mensagem_chat) from (select count(idmensagem) as media_mensagem_chat
-													from chat left join mensagem
-													on chat.idchat = mensagem.idchat
-													group by chat.idchat));
+having count(*) > ( select avg(media_mensagem_chat) 
+		    from ( select count(idmensagem) as media_mensagem_chat
+		    	   from chat left join mensagem
+		           on chat.idchat = mensagem.idchat
+		           group by chat.idchat));
 
 
-		
